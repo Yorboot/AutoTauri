@@ -1,0 +1,58 @@
+{
+  "brands": [
+    "Tesla", "Nissan", "BMW", "Audi", "Volkswagen", "Hyundai", "Kia", "Ford",
+    "Chevrolet", "Renault", "Peugeot", "Mercedes-Benz", "Volvo", "Porsche",
+    "Jaguar", "Polestar", "BYD", "MG", "Skoda", "Fiat", "Mini", "Opel",
+    "Cupra", "Lucid", "Rivian", "Genesis", "Smart", "Mazda", "Toyota", "Honda"
+  ],
+
+  "models": {
+    "Tesla": ["Model 3", "Model S", "Model X", "Model Y", "Cybertruck", "Roadster"],
+    "Nissan": ["Leaf", "Ariya", "Townstar EV"],
+    "BMW": ["i3", "i4", "i5", "i7", "iX", "iX1", "iX3"],
+    "Audi": ["Q4 e-tron", "Q8 e-tron", "e-tron GT", "RS e-tron GT"],
+    "Volkswagen": ["ID.3", "ID.4", "ID.5", "ID.7", "ID.Buzz", "e-Golf", "e-Up!"],
+    "Hyundai": ["Ioniq Electric", "Ioniq 5", "Ioniq 6", "Kona Electric"],
+    "Kia": ["EV3", "EV6", "EV9", "Niro EV", "Soul EV"],
+    "Ford": ["Mustang Mach-E", "F-150 Lightning", "E-Transit"],
+    "Chevrolet": ["Bolt EV", "Bolt EUV", "Silverado EV", "Blazer EV"],
+    "Renault": ["Zoe", "Megane E-Tech", "Scenic E-Tech", "Twingo Electric"],
+    "Peugeot": ["e-208", "e-2008", "e-308", "e-3008", "e-Partner"],
+    "Mercedes-Benz": ["EQA", "EQB", "EQC", "EQE", "EQS", "EQT"],
+    "Volvo": ["EX30", "EX40", "EC40", "EX90", "XC40 Recharge", "C40 Recharge"],
+    "Porsche": ["Taycan", "Taycan Cross Turismo", "Taycan Sport Turismo"],
+    "Jaguar": ["I-PACE"],
+    "Polestar": ["Polestar 2", "Polestar 3", "Polestar 4"],
+    "BYD": ["Atto 3", "Dolphin", "Seal", "Han EV", "Tang EV"],
+    "MG": ["MG4 Electric", "MG5 Electric", "ZS EV", "Marvel R"],
+    "Skoda": ["Enyaq iV", "Enyaq Coupe iV", "Citigo-e iV"],
+    "Fiat": ["500e", "600e", "E-Ducato"],
+    "Mini": ["Cooper SE", "Countryman Electric"],
+    "Opel": ["Corsa-e", "Mokka-e", "Astra Electric", "Combo-e"],
+    "Cupra": ["Born", "Tavascan"],
+    "Lucid": ["Air Pure", "Air Touring", "Air Grand Touring"],
+    "Rivian": ["R1T", "R1S", "EDV 700", "EDV 900"],
+    "Genesis": ["GV60", "Electrified GV70", "Electrified G80"],
+    "Smart": ["#1", "#3"],
+    "Mazda": ["MX-30 Electric"],
+    "Toyota": ["bZ4X", "Proace Electric", "Proace City Electric"],
+    "Honda": ["e", "e:Ny1"]
+  },
+
+  "colors": [
+    "White", "Black", "Silver", "Gray", "Dark Gray",
+    "Blue", "Light Blue", "Navy Blue",
+    "Red", "Burgundy", "Green", "Dark Green",
+    "Yellow", "Orange", "Brown", "Beige",
+    "Gold", "Bronze", "Purple",
+    "Matte Black", "Pearl White", "Midnight Blue"
+  ],
+
+  "priceRange": { "min": 15000, "max": 120000 },
+  "mileageRange": { "min": 0, "max": 200000 },
+  "seatsRange": { "min": 2, "max": 8 },
+  "doorsRange": { "min": 2, "max": 6 },
+  "productionYearRange": { "min": 2014, "max": 2025 },
+  "weightRange": { "min": 1100, "max": 2800 },
+  "viewsRange": { "min": 0, "max": 15000 }
+}
