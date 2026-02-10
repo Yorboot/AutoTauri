@@ -1,14 +1,11 @@
-const { app, BrowserWindow } = require('electron/main')
+//This is the main entry point for electron
+const { app, BrowserWindow,screen } = require('electron/main')
 
 const createWindow = () => {
-    const win = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences:{
-            nodeIntegration: true,
-            contextIsolation: false
-        }
-    })
+    const primaryDisplay = screen.getPrimaryDisplay()
+    const { width, height } = primaryDisplay.workAreaSize
+
+    let win = new BrowserWindow({width, height})
 
     win.loadFile('index.html')
     win.webContents.on('did-finish-load', () => {
