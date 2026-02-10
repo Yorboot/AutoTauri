@@ -7,10 +7,19 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently \"npm run watch:css\" \"electron .\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "postcss styling/input.css -o styling/output.css",
+    "watch:css": "postcss styling/input.css -o styling/output.css --watch"
   },
   "devDependencies": {
-    "electron": "^40.2.1"
+    "concurrently": "^9.2.1",
+    "electron": "^40.2.1",
+    "postcss-cli": "^11.0.1"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18"
   }
 }
