@@ -5,7 +5,11 @@ const createWindow = () => {
     const primaryDisplay = screen.getPrimaryDisplay()
     const { width, height } = primaryDisplay.workAreaSize
 
-    let win = new BrowserWindow({width, height})
+    let win = new BrowserWindow(
+        {width, height,    webPreferences: {
+                nodeIntegration: true,
+                contextIsolation: false
+            }})
 
     win.loadFile('index.html')
     win.webContents.on('did-finish-load', () => {
