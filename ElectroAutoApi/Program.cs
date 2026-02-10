@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Net;
 using System.Reflection.Metadata;
 using System.Text.Json;
 using DevOne.Security.Cryptography.BCrypt;
@@ -87,6 +88,22 @@ namespace ElectroAutoApi
                         var form = request.InputStream;
                         var reader = new System.IO.StreamReader(form);
                         var body = reader.ReadToEnd();
+                        var validationContext = new System.ComponentModel.DataAnnotations.ValidationContext(body);
+                        var validationResults = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
+
+                        if (!Validator.TryValidateObject(body, validationContext, validationResults, true))
+                        {
+                            var errors = new List<string>();
+                            foreach (var validationResult in validationResults)
+                            {
+                                errors.Add(validationResult.ErrorMessage);
+                            }
+                            responseString = string.Join(Environment.NewLine, errors);
+                            response.StatusCode = 400;
+                            continue;
+                        }
+
+                        Console.WriteLine("Received body: " + body);
                         var Car = JsonSerializer.Deserialize<Car>(body,options);
                         if (Car == null)
                         {
@@ -95,10 +112,10 @@ namespace ElectroAutoApi
                         }
                         db.Cars.Add(Car);
                         db.SaveChanges();
+                        Console.WriteLine("Car created with ID: " + Car.Id);
                         response.StatusCode = 201;
                         continue;
-                        continue;
-                        
+
                 }else if (request.Url.AbsolutePath == "/delete" && request.HttpMethod == "DELETE")
                 { 
                         var form = request.InputStream;
