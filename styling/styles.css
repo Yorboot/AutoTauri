@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+}
+#car-overview {
+    height: 90vh;
+    width: 100%;
+    margin: 5vh 0;
+    border: 2px solid black;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+#car-overview thead th {
+    padding: 8px;
+    border: 1px solid #ccc;
+    background: #eee;
+    white-space: nowrap;
+    text-wrap: pretty;
+}
+#car-overview td {
+    padding: 8px;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#car-overview tbody {
+    display: block;
+    height: 75vh;
+    overflow-y: auto;
+}
+
+#car-overview thead,
+#car-overview tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}

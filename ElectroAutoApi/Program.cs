@@ -12,6 +12,11 @@ namespace ElectroAutoApi
     {
         static void Main(string[] args)
         {
+            JsonSerializerOptions options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true
+            };
             HttpListener lister = new HttpListener();
             var db = new AppDbContext();
             var seed = new CarSeeder(db);
@@ -33,13 +38,13 @@ namespace ElectroAutoApi
                 {
                     var Cars = db.Cars.ToList();
 
-                    responseString += JsonSerializer.Serialize(Cars);
+                    responseString += JsonSerializer.Serialize(Cars,options);
                 }else if(request.Url.AbsolutePath == "/update" && request.HttpMethod == "POST"){
                     
                         var form = request.InputStream;
                         var reader = new System.IO.StreamReader(form);
                         var body = reader.ReadToEnd();
-                        var Car = JsonSerializer.Deserialize<Car>(body);
+                        var Car = JsonSerializer.Deserialize<Car>(body,options);
                         if (Car != null)
                         {
                             Car CarFromDb = db.Cars.FirstOrDefault(t => t.Id == Car.Id);
@@ -82,7 +87,7 @@ namespace ElectroAutoApi
                         var form = request.InputStream;
                         var reader = new System.IO.StreamReader(form);
                         var body = reader.ReadToEnd();
-                        var Car = JsonSerializer.Deserialize<Car>(body);
+                        var Car = JsonSerializer.Deserialize<Car>(body,options);
                         if (Car == null)
                         {
                             response.StatusCode = 404;
@@ -99,7 +104,7 @@ namespace ElectroAutoApi
                         var form = request.InputStream;
                         var reader = new System.IO.StreamReader(form);
                         var body = reader.ReadToEnd();
-                        var Car = JsonSerializer.Deserialize<Car>(body);
+                        var Car = JsonSerializer.Deserialize<Car>(body,options);
                         if (Car == null)
                         {
                             response.StatusCode = 404;
@@ -126,7 +131,7 @@ namespace ElectroAutoApi
                 //     using(var db = new AppDbContext())
                 //     {
                 //         var users = db.Users.ToList();
-                //         responseString += JsonSerializer.Serialize(users);
+                //         responseString += JsonSerializer.Serialize(users,options);
                 //     }
                 //     
                 // } else if (request.Url.AbsolutePath == "/register" && request.HttpMethod == "POST")
@@ -136,7 +141,7 @@ namespace ElectroAutoApi
                 //         var form = request.InputStream;
                 //         var reader = new System.IO.StreamReader(form);
                 //         var body = reader.ReadToEnd();
-                //         var user = JsonSerializer.Deserialize<User>(body);
+                //         var user = JsonSerializer.Deserialize<User>(body,options);
                 //         if (user == null)
                 //         {
                 //             response.StatusCode = 404;
@@ -154,7 +159,7 @@ namespace ElectroAutoApi
                 //         var form = request.InputStream;
                 //         var reader = new System.IO.StreamReader(form);
                 //         var body = reader.ReadToEnd();
-                //         var user = JsonSerializer.Deserialize<User>(body);
+                //         var user = JsonSerializer.Deserialize<User>(body,options);
                 //         if (user == null)
                 //         {
                 //             response.StatusCode = 404;

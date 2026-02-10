@@ -3,14 +3,21 @@ const { app, BrowserWindow } = require('electron/main')
 const createWindow = () => {
     const win = new BrowserWindow({
         width: 800,
-        height: 600
+        height: 600,
+        webPreferences:{
+            nodeIntegration: true,
+            contextIsolation: false
+        }
     })
 
     win.loadFile('index.html')
+    win.webContents.on('did-finish-load', () => {
+        getCars();
+    })
 }
 
 app.whenReady().then(() => {
-    createWindow()
+    createWindow();
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
@@ -18,6 +25,24 @@ app.whenReady().then(() => {
         }
     })
 })
+async function getCars() {
+    try {
+        const response = await fetch('http://localhost:8080/all')
+        const data = await response.json()
+        if(data[0] == null) {
+            console.log('No cars found')
+            return;
+        }else{
+            console.log('Cars fetched successfully:')
+        }
+        const win = BrowserWindow.getAllWindows()[0]
+        if (win) {
+            win.webContents.send('cars-data', data)
+        }
+    } catch (error) {
+        console.error('Error fetching cars:', error)
+    }
+}
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {

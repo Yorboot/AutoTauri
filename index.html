@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
@@ -11,10 +11,40 @@
             http-equiv="X-Content-Security-Policy"
             content="default-src 'self'; script-src 'self'"
     />
-    <title>Hello from Electron renderer!</title>
+    <link rel="stylesheet" href="styling/styles.css" />
+    <script src="renderer.js"></script>
+    <title>Electro auto</title>
 </head>
-<body>
-<h1>Hello from Electron renderer!</h1>
-<p>👋</p>
-</body>
+    <body>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="add-car.html">Add Car</a>
+        </nav>
+        <table id="car-overview">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>User ID</th>
+                    <th>License Plate</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Price</th>
+                    <th>Mileage</th>
+                    <th>Seats</th>
+                    <th>Doors</th>
+                    <th>Production Year</th>
+                    <th>Weight</th>
+                    <th>Color</th>
+                    <th>Image</th>
+                    <th>Sold At</th>
+                    <th>Views</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                </tr>
+            </thead>
+            <tbody id="car-overview-body">
+    
+            </tbody>
+        </table>
+    </body>
 </html>
