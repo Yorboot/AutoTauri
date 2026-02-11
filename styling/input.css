@@ -1,27 +1,32 @@
 @import "tailwindcss";
 
+:root{
+    --text-color: #dfd8d8;
+}
+*{
+    color: var(--text-color);
+}
 body{
     margin: 0;
     padding: 0;
     height: 100vh;
     width: 100%;
-    background-color: #f0f0f0;
+    background-image: linear-gradient(to top right, #3c3c3c, #bdbcbc);
+    background-repeat: no-repeat;
     display: flex;
-    justify-content: center;
     font-family: 'Arial', sans-serif;
 }
 #car-overview {
     height: 90vh;
     width: 100%;
     margin: 5vh 0;
-    border: 2px solid black;
     border-collapse: collapse;
     table-layout: fixed;
 }
 #car-overview thead th {
     padding: 8px;
     border: 1px solid #ccc;
-    background: #eee;
+    background: #757575;
     white-space: nowrap;
     text-wrap: pretty;
 }
@@ -43,4 +48,54 @@ body{
     display: table;
     width: 100%;
     table-layout: fixed;
+}
+
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+
+.step.active {
+    opacity: 1;
+    background-color: #ffffff;
+}
+
+.step.finish {
+    border: #3c3c3c 2px solid;
+    scale: 1.2;
+    background-color: rgb(17, 255, 0);
+}
+input{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #918f8f;
+}
+
+.tab {
+    display: none;
+}
+
+.invalid {
+    background-color: #fd0000;
+}
+#car-form{
+    height: 90vh;
+}
+label{
+    color: #dfd8d8;
+    font-weight: bold;
+}
+input{
+    margin-bottom: 1vh;
+    color: #dfd8d8;
 }

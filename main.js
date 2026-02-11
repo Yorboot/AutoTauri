@@ -5,6 +5,7 @@ let currentTab = 0; // Current tab is set to be the first tab (0)
 document.addEventListener('DOMContentLoaded', function() {
     showTab(currentTab);
     addListenerToForm();
+
 });
 
 function showTab(n) {
@@ -27,6 +28,7 @@ function showTab(n) {
         document.getElementById("prevBtn").style.display = "inline";
     }
     if (n === (x.length - 1)) {
+        document.getElementById("nextBtn").style.display = "none";
         document.getElementById("submitBtn").style.display = "block";
     } else {
         document.getElementById("nextBtn").innerHTML = "Next";
@@ -37,7 +39,7 @@ function showTab(n) {
 function addListenerToForm(){
     document.getElementById('car-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-
+        let errorText = document.getElementById("error-box");
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
 
@@ -61,8 +63,18 @@ function addListenerToForm(){
         if (response.ok) {
             console.log('Car created successfully');
         } else {
-            console.error('Failed to create car');
+            console.error('Car created failed with status ' + response.status);
+            try{
+                const error = await response.json();
+                console.error('Failed to create car');
+                errorText.style.display = "block";
+                errorText.textContent = `Failed to create a car ${error.message || JSON.stringify(error)}`;
+            }catch(parseError){
+                console.error('Failed to parse error response', parseError);
+                errorText.textContent = `Failed to create a car. Status: ${response.status}`;
+            }
         }
+        console.log("Form submitted with data:", data);
     });
 }
 function nextPrev(n) {

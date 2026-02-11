@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <title>Add a car</title>
     <script src="main.js"></script>
-    <link rel="stylesheet" href="styling/input.css">
+    <link rel="stylesheet" href="styling/output.css">
 </head>
-    <body>
+    <body class="flex flex-col items-center gap-4">
+        <nav class="navbar flex justify-around gap-10">
+            <a href="index.html" class="border-b text-xl border-[#dfd8d8]">Home</a>
+            <a href="add-car.html" class="border-b text-xl border-[#dfd8d8]">Add Car</a>
+        </nav>
+        <h1 class="text-3xl">Add a car</h1>
+<!-- AB-123-CD       -->
         <form id="car-form" method = "post" action="http://localhost:8080/create">
-            <h1>Add a car</h1>
             <div class="tab">
                 <label for="licensePlate">License Plate:</label>
                 <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text#validation the oninput prevents errors classes from staying on the input to prevent validation errors -->
@@ -52,14 +57,17 @@
             </div>
 
             <div>
-                <div>
-                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                    <button type="submit" id="submitBtn" style="display:none;">Submit</button>
+                <div class="flex flex-col items-center justify-around gap-4 mt-[2vh]">
+                    <div class="flex flex-row justify-center gap-4">
+                        <button type="button" class="hover:cursor-pointer" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                        <button type="button" class="hover:cursor-pointer" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                        <button type="submit" class="hover:cursor-pointer" id="submitBtn" style="display:none;">Submit</button>
+                    </div>
+                    <p id="error-box" class="hidden text-pretty !text-red-300 w-[30%]"></p>
                 </div>
             </div>
 
-            <div class="tab">
+            <div class="flex flex-row justify-center gap-2 mt-[2vh]">
                 <span class="step"></span>
                 <span class="step"></span>
                 <span class="step"></span>

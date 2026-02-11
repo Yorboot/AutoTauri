@@ -88,26 +88,32 @@ namespace ElectroAutoApi
                         var form = request.InputStream;
                         var reader = new System.IO.StreamReader(form);
                         var body = reader.ReadToEnd();
-                        var validationContext = new System.ComponentModel.DataAnnotations.ValidationContext(body);
+                        Console.WriteLine("Received body: " + body);
+                        var Car = JsonSerializer.Deserialize<Car>(body,options);
+                        if (Car == null)
+                        {
+                            response.StatusCode = 404;
+                            continue;
+                        }
+                        var validationContext = new System.ComponentModel.DataAnnotations.ValidationContext(Car);
                         var validationResults = new List<System.ComponentModel.DataAnnotations.ValidationResult>();
 
-                        if (!Validator.TryValidateObject(body, validationContext, validationResults, true))
+                        if (!Validator.TryValidateObject(Car, validationContext, validationResults, true))
                         {
                             var errors = new List<string>();
                             foreach (var validationResult in validationResults)
                             {
                                 errors.Add(validationResult.ErrorMessage);
                             }
-                            responseString = string.Join(Environment.NewLine, errors);
-                            response.StatusCode = 400;
-                            continue;
-                        }
-
-                        Console.WriteLine("Received body: " + body);
-                        var Car = JsonSerializer.Deserialize<Car>(body,options);
-                        if (Car == null)
-                        {
+                            responseString = JsonSerializer.Serialize(errors, options);
                             response.StatusCode = 404;
+                            response.ContentType = "application/json";
+                            byte[] errorBuffer = System.Text.Encoding.UTF8.GetBytes(responseString);
+                            response.ContentLength64 = errorBuffer.Length;
+                            System.IO.Stream errorOutput = response.OutputStream;
+                            errorOutput.Write(errorBuffer, 0, errorBuffer.Length);
+                            errorOutput.Close();
+                            Console.WriteLine("Sent out validation errors: " + responseString);
                             continue;
                         }
                         db.Cars.Add(Car);
