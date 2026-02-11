@@ -1,0 +1,24 @@
+{
+  "firstNames": [
+    "John", "Jane", "Michael", "Sarah", "David", "Emma", "Robert", "Lisa",
+    "James", "Maria", "William", "Jennifer", "Richard", "Patricia", "Thomas",
+    "Linda", "Charles", "Barbara", "Daniel", "Elizabeth", "Matthew", "Susan",
+    "Christopher", "Jessica", "Andrew", "Karen", "Joseph", "Nancy", "Kevin",
+    "Betty", "Brian", "Helen", "George", "Sandra", "Edward", "Dorothy",
+    "Ronald", "Ashley", "Timothy", "Kimberly", "Jason", "Emily", "Jeffrey",
+    "Donna", "Ryan", "Michelle", "Jacob", "Carol", "Gary", "Amanda"
+  ],
+  "lastNames": [
+    "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller",
+    "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez",
+    "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin",
+    "Lee", "Perez", "Thompson", "White", "Harris", "Sanchez", "Clark",
+    "Ramirez", "Lewis", "Robinson", "Walker", "Young", "Allen", "King",
+    "Wright", "Scott", "Torres", "Nguyen", "Hill", "Flores", "Green",
+    "Adams", "Nelson", "Baker", "Hall", "Rivera", "Campbell", "Mitchell"
+  ],
+  "emailDomains": [
+    "gmail.com", "outlook.com", "yahoo.com", "hotmail.com", "icloud.com",
+    "protonmail.com", "mail.com", "aol.com", "zoho.com", "gmx.com"
+  ]
+}

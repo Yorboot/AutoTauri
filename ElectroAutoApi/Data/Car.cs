@@ -7,7 +7,7 @@ public class Car
 {
     [Key]
     public int Id { get; set; }
-
+    [ForeignKey("Id")]
     [Required]
     public int UserId { get; set; }
 
