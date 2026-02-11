@@ -3,7 +3,7 @@
     "Tesla", "Nissan", "BMW", "Audi", "Volkswagen", "Hyundai", "Kia", "Ford",
     "Chevrolet", "Renault", "Peugeot", "Mercedes-Benz", "Volvo", "Porsche",
     "Jaguar", "Polestar", "BYD", "MG", "Skoda", "Fiat", "Mini", "Opel",
-    "Cupra", "Lucid", "Rivian", "Genesis", "Smart", "Mazda", "Toyota", "Honda"
+    "Cupra", "Lucid", "Rivian", "Genesis", "Smart", "Mazda", "Toyota", "Honda","Lamborghini"
   ],
 
   "Models": {
@@ -36,7 +36,8 @@
     "Smart": ["#1", "#3"],
     "Mazda": ["MX-30 Electric"],
     "Toyota": ["bZ4X", "Proace Electric", "Proace City Electric"],
-    "Honda": ["e", "e:Ny1"]
+    "Honda": ["e", "e:Ny1"],
+    "Lamborghini": ["hurican", "adventador"]
   },
 
   "Colors": [
